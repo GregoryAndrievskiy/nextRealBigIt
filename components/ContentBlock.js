@@ -9,7 +9,7 @@ const BlockWrapper = styled(Element)`
 `;
 
 const BlockGrid = styled.div`
-    max-width: 1032px;
+    max-width: 960px;
     margin: 0 auto;
     
     @media (max-width: 768px) {

@@ -121,7 +121,7 @@ const BlockWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(re
 const BlockGrid = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "ContentBlock__BlockGrid",
   componentId: "juue6e-1"
-})(["max-width:1032px;margin:0 auto;@media (max-width:768px){background-color:blue;}"]);
+})(["max-width:960px;margin:0 auto;@media (max-width:768px){background-color:blue;}"]);
 function ContentBlock(props) {
   const {
     children,
@@ -169,18 +169,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_scroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-scroll */ "react-scroll");
 /* harmony import */ var react_scroll__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_scroll__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _NavButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavButton */ "./components/NavButton.js");
 var _jsxFileName = "G:\\nextRealBigIt\\components\\Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
+
+const Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(37, 37, 38);
+`;
 function Header(props) {
   const {
     data
   } = props;
-  return __jsx("div", {
+  const [active, setActive] = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null);
+  return __jsx(Wrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 20
     },
     __self: this
   }, data.map(item => __jsx(react_scroll__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -191,15 +203,23 @@ function Header(props) {
     spy: true,
     smooth: true,
     duration: 500,
+    onSetActive: name => setActive(name),
     style: {
       margin: '5px'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 22
     },
     __self: this
-  }, item.name)));
+  }, __jsx(_NavButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    isActive: active === item.name,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: this
+  }, item.name))));
 }
 ;
 
@@ -246,6 +266,69 @@ function Layout(props) {
     __self: this
   }, "To the top!"));
 }
+
+/***/ }),
+
+/***/ "./components/NavButton.js":
+/*!*********************************!*\
+  !*** ./components/NavButton.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/styles */ "@material-ui/styles");
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_styles__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "G:\\nextRealBigIt\\components\\NavButton.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const useStyles = Object(_material_ui_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])({
+  root: ({
+    isActive
+  }) => ({
+    borderRadius: '0',
+    textTransform: 'none',
+    height: '45px',
+    lineHeight: '19px',
+    textAlign: 'center',
+    fontSize: '16px',
+    minWidth: '100px',
+    padding: '0 25px',
+    color: isActive ? '#fff' : '#ccc',
+    borderBottom: isActive ? '6px solid #00ADED' : '6px solid #252526',
+    fontFamily: 'Ubuntu',
+    fontWeight: '300',
+    '&:hover': {
+      color: '#fff',
+      borderBottom: '6px solid #00ADED'
+    }
+  })
+});
+
+const NavButton = props => {
+  const {
+    children
+  } = props;
+  const classes = useStyles(props);
+  return __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    disableRipple: true,
+    classes: classes,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  }, children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NavButton);
 
 /***/ }),
 
@@ -329,6 +412,28 @@ const Index = () => __jsx(_components_MyLayout__WEBPACK_IMPORTED_MODULE_1__["def
 
 module.exports = __webpack_require__(/*! G:\nextRealBigIt\pages\index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "@material-ui/core/Button":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/Button" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Button");
+
+/***/ }),
+
+/***/ "@material-ui/styles":
+/*!**************************************!*\
+  !*** external "@material-ui/styles" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/styles");
 
 /***/ }),
 
